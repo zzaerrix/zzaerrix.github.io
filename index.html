@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- EDIT: 브라우저 탭 제목과 검색 설명 -->
+  <title>Your Name — Research & Ideas</title>
+  <meta name="description" content="A personal portfolio for research, projects, and publications.">
+  <style>
+    :root{--ink:#183b30;--paper:#f6f5ee;--muted:#63736a;--line:#d8ded4;--accent:#c7e29d}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.7 Arial,'Noto Sans KR',sans-serif}a{color:inherit}a:focus-visible,button:focus-visible{outline:3px solid #c6a94c;outline-offset:6px}.skip{position:fixed;top:-90px;left:20px;z-index:99;background:white;padding:10px}.skip:focus{top:10px}
+    header{position:fixed;inset:0 0 auto;z-index:10;background:rgba(13,41,29,.94);color:#fff}nav{max-width:1200px;margin:auto;height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 36px}.brand{text-decoration:none;font:bold 20px Georgia,serif;letter-spacing:.03em}.links{display:flex;gap:35px}.links a{text-decoration:none;font-size:15px;padding:7px 0;border-bottom:2px solid transparent}.links a:hover,.links a[aria-current]{border-color:var(--accent);color:var(--accent)}
+    .hero{height:100svh;min-height:660px;position:relative;color:white;isolation:isolate;display:flex;align-items:flex-end;padding:140px max(7vw,28px) 110px;background:#143927}.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% center;z-index:-2}.hero:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(4,28,17,.52),transparent 85%),linear-gradient(0deg,rgba(4,28,17,.5),transparent 70%)}.hero-copy{max-width:640px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:bold}.hero h1{font:clamp(48px,7.5vw,100px)/1.08 Georgia,serif;margin:22px 0}.hero p{font-size:clamp(17px,2vw,23px);max-width:520px;color:#edf4e3}.hero .button{display:inline-block;text-decoration:none;border:1px solid #c8d6b7;padding:10px 22px;margin-top:20px;font-size:14px;background:rgba(12,39,25,.45)}.button:hover{background:#244b38}.down{position:absolute;bottom:30px;left:max(7vw,28px);font-size:12px;letter-spacing:.12em;text-decoration:none}
+    .section{max-width:1120px;margin:auto;padding:105px 36px}.section h2{font:clamp(36px,5vw,57px)/1.15 Georgia,serif;font-weight:normal;margin:15px 0 28px}.section p{color:var(--muted)}.about{display:grid;grid-template-columns:1fr 1.5fr;gap:70px}.about p{margin:0 0 22px}.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}.tags span{border:1px solid var(--line);padding:5px 13px;font-size:13px}.projects-wrap{background:#e9eee5}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px}.section-head p{font-size:14px;max-width:340px}.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:36px}.project{border-top:2px solid #809e73;padding-top:20px}.number{font:italic 30px Georgia,serif;color:#68835f}.project h3{font:26px/1.3 Georgia,serif;margin:23px 0 14px}.project p{font-size:15px}.type{font-size:11px;text-transform:uppercase;letter-spacing:.12em}.publications{list-style:none;margin:36px 0 0;padding:0}.publications li{display:grid;grid-template-columns:85px 1fr;gap:25px;border-top:1px solid var(--line);padding:28px 0}.year{font:24px Georgia,serif}.publications h3{font:24px/1.4 Georgia,serif;margin:0 0 9px}.publications p{font-size:14px;margin:0}.note{font-size:13px;color:var(--muted)}footer{background:#15392c;color:#e2eadc;padding:45px 36px}.footer-inner{max-width:1048px;margin:auto;display:flex;justify-content:space-between;gap:22px;font-size:13px}footer p{margin:0}footer a{text-underline-offset:4px}
+    @media(max-width:700px){nav{padding:0 20px;height:70px}.brand{font-size:17px}.links{gap:14px}.links a{font-size:12px}.hero{min-height:700px;padding:140px 25px 100px}.hero img{object-position:70% center}.hero:after{background:linear-gradient(0deg,rgba(4,28,17,.92),rgba(4,28,17,.05) 80%)}.hero h1{font-size:54px}.hero p{max-width:310px}.section{padding:70px 25px}.about{grid-template-columns:1fr;gap:12px}.section-head{display:block}.projects{grid-template-columns:1fr;gap:32px}.publications li{grid-template-columns:55px 1fr;gap:15px}.publications h3{font-size:21px}.footer-inner{flex-direction:column}.down{left:25px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+<a class="skip" href="#about">Skip to content</a>
+<header><nav aria-label="Main navigation">
+  <!-- EDIT: 이름/이니셜 -->
+  <a class="brand" href="#home">Your Name.</a>
+  <div class="links"><a href="#home" aria-current="location">Home</a><a href="#about">About</a><a href="#project">Project</a><a href="#publication">Publication</a></div>
+</nav></header>
+<main>
+  <section class="hero" id="home" aria-labelledby="name">
+    <!-- EDIT: 사진 교체는 assets/turtle-hero.png 파일을 바꾸거나 아래 src 수정 -->
+    <img src="assets/turtle-hero.png" alt="A smiling green cartoon turtle sitting by a sunlit forest pond" fetchpriority="high">
+    <div class="hero-copy"><span class="eyebrow">Welcome to my corner of the world</span><h1 id="name">Your Name</h1><p>Curious minds. Meaningful questions.<br>One small discovery at a time.</p><a class="button" href="#about">A little about me ↗</a></div>
+    <a href="#about" class="down">SCROLL TO EXPLORE ↓</a>
+  </section>
+  <!-- 아래 소개, 프로젝트, 논문은 모두 교체용 예시입니다. -->
+  <section class="section about" id="about" aria-labelledby="about-title">
+    <div><span class="eyebrow">01 / A little introduction</span><h2 id="about-title">About me.</h2></div>
+    <div><p>Hello! I’m <strong>Your Name</strong>, a student and aspiring researcher interested in how data can help us understand the world.</p><p>I enjoy turning interesting questions into thoughtful projects, learning new tools, and sharing what I discover along the way.</p><p>안녕하세요. 이곳에 소속, 관심 분야, 간단한 자기소개를 작성해 주세요. 수업 과제, 연구 활동, 개인 프로젝트 등을 소개할 수 있습니다.</p><div class="tags"><span>Data Science</span><span>Machine Learning</span><span>Creative Projects</span></div></div>
+  </section>
+  <div class="projects-wrap"><section class="section" id="project" aria-labelledby="project-title">
+    <div class="section-head"><div><span class="eyebrow">02 / Ideas in practice</span><h2 id="project-title">Selected projects.</h2></div><p>A few things I’m exploring, building, and learning from.</p></div>
+    <div class="projects">
+      <article class="project"><span class="number">01</span><h3>Making sense<br>of data</h3><span class="type">Example / Data analysis</span><p>Explore a public dataset, ask a clear question, and communicate the findings through simple visualizations.</p></article>
+      <article class="project"><span class="number">02</span><h3>Learning with<br>neural networks</h3><span class="type">Example / Machine learning</span><p>Build a small classification model and investigate what improves its performance and where it makes mistakes.</p></article>
+      <article class="project"><span class="number">03</span><h3>A space for<br>my ideas</h3><span class="type">Example / Web development</span><p>Create a personal website with HTML and CSS, then publish it with GitHub Pages to share projects and interests.</p></article>
+    </div>
+  </section></div>
+  <section class="section" id="publication" aria-labelledby="pub-title">
+    <span class="eyebrow">03 / Writing & research</span><h2 id="pub-title">Publications.</h2><p>Research papers, reports, and other things I’ve written.</p>
+    <p class="note">아래 항목은 형식을 보여주기 위한 가상 예시입니다. 논문이 없으면 수업 보고서나 발표 자료를 적어도 됩니다.</p>
+    <ol class="publications"><li><span class="year">2026</span><div><h3>Your research paper or project report title</h3><p><strong>Your Name</strong>, Coauthor Name</p><p>Journal / Conference / Course report · Example entry</p></div></li><li><span class="year">2025</span><div><h3>Another piece of writing you would like to share</h3><p><strong>Your Name</strong></p><p>Presentation / Technical report · Example entry</p></div></li></ol>
+  </section>
+</main>
+<footer><div class="footer-inner"><p>© <span id="year">2026</span> Your Name · Personal portfolio</p><a href="#home">Back to top ↑</a></div></footer>
+<script>
+  document.getElementById('year').textContent=new Date().getFullYear();
+  const links=[...document.querySelectorAll('.links a')];
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>{if(link.hash==='#'+entry.target.id){link.setAttribute('aria-current','location')}else{link.removeAttribute('aria-current')}})}});
+  },{rootMargin:'-20% 0px -55% 0px',threshold:0});
+  document.querySelectorAll('main section[id]').forEach(section=>observer.observe(section));
+</script>
+</body>
+</html>
