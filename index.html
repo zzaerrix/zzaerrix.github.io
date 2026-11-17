@@ -43,6 +43,32 @@
 .lab-link{display:flex;align-items:center;justify-content:space-between;gap:15px;border:1px solid #dae5f6;border-radius:12px;padding:16px 18px;background:#f3f7ff;color:#234478;text-decoration:none;transition:background .2s,border-color .2s}.lab-link:hover{background:#eaf2ff;border-color:#a8c5f0;text-decoration:none}
 .lab-link strong{display:block;font-size:13px;margin-bottom:3px}.lab-link small{font-size:11px;color:#5e7394}.lab-link .link-arrow{font-size:22px;color:#426bbb}
 @media(max-width:580px){.about-intro{grid-template-columns:105px minmax(0,1fr);gap:17px}.about-photo{width:105px}.about-photo-fallback{font-size:29px}.education-item{grid-template-columns:1fr}.education-date{white-space:normal}}
+
+/* Clickable project gallery and project detail page */
+.project-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.project-card{padding:0;text-align:left;display:flex;flex-direction:column;min-height:248px;width:100%;color:inherit;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.project-card:hover,.project-card:focus-visible{transform:translateY(-3px);box-shadow:0 15px 32px #1c3a6d1a;border-color:#a7bae3;outline:none}
+.project-card:focus-visible{outline:3px solid #668ce8;outline-offset:2px}
+.project-art{height:154px;position:relative;overflow:hidden;flex:none;font-size:46px;background:linear-gradient(140deg,#e7edfa,#d5e3fa 52%,#f6f9ff)}
+.project-art img{width:100%;height:100%;object-fit:cover;display:block}
+.project-art .project-placeholder{display:flex;width:100%;height:100%;align-items:center;justify-content:center;font-size:46px}
+.project-art .project-image-fallback{display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:46px}
+.project-body{padding:16px 17px 19px;flex:1}
+.project-body h3{font-size:15px;line-height:1.45;margin:7px 0}
+.project-body p{font-size:12px;line-height:1.65}
+.project-foot{font-size:11px;color:#4469b0;margin-top:12px;font-weight:700}
+.project-detail-back{border:1px solid #dce6f5;background:#f2f6ff;border-radius:9px;padding:9px 13px;color:#315ba5;font-size:12px;margin:0 0 20px;font-weight:700}
+.project-detail-back:hover{background:#e7efff}
+.project-detail-hero{width:100%;min-height:170px;max-height:330px;overflow:hidden;border-radius:14px;background:linear-gradient(130deg,#e1eaf8,#eaf3ff);display:grid;place-items:center;font-size:60px;margin:15px 0 24px}
+.project-detail-hero img{width:100%;height:auto;max-height:330px;object-fit:contain}
+.project-detail-hero .detail-fallback{display:none}
+.project-detail-description{font-size:13px;color:#536581;line-height:1.85;white-space:pre-line;margin-top:14px}
+.project-detail-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:24px 0}
+.project-detail-meta>div{padding:14px;border-radius:10px;background:#f4f7fd;border:1px solid #e4eaf5}
+.project-detail-meta strong{display:block;font-size:10px;letter-spacing:.07em;color:#7a8aa4;text-transform:uppercase;margin-bottom:5px}
+.project-detail-meta span{font-size:12px;color:#20385e;font-weight:600;line-height:1.5}
+.project-detail-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+@media(max-width:570px){.project-list{grid-template-columns:1fr}.project-detail-meta{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -67,11 +93,31 @@ const CONFIG={
   interests:['Computational Biology','Machine Learning','AI for Science','Bioinformatics'],
   github:'https://github.com/zzaerrix',
   email:'chaern.leee@gmail.com',
+  // PROJECTS: Edit each card here. Images go in the images/ folder.
+  // Leave image:'' to use an elegant placeholder. Add actual award names only when verified.
   projects:[
-    {icon:'🧬',category:'Computational Biology',title:'Gene Perturbation Prediction',description:'Exploring how to predict transcriptional responses to unseen gene perturbations.'},
-    {icon:'🧠',category:'Scientific AI',title:'Reliable AI for Science',description:'Investigating how AI systems reason with evidence in scientific analysis.'},
-    {icon:'🎧',category:'Biomedical AI',title:'Speech & Health',description:'Studying speech signals and machine learning approaches for biomedical tasks.'},
-    {icon:'🔬',category:'Research Exploration',title:'AI Research Projects',description:'A collection of ongoing experiments, questions, and ideas.'}
+    {icon:'🧬', category:'Spatial Data Analysis', title:'배달존 최적입지 선정',
+     description:'Identifying optimal delivery zone locations through spatial data analysis.',
+     image:'images/project1.jpg', period:'2023.04 - 2023.06', award:'중앙대학교 제4회 경영경제대학 학술제 장려상(2023.06)', role:'Analysis', details:`교내 배달음식 이용에 따라 발생하는 쓰레기 분리배출 문제를 해결하기 위해 배달존의 최적 설치 위치를 선정한 프로젝트이다.
+
+최대 커버링 입지 문제(MCLP)를 활용하여 중앙대학교 내 4개의 후보지를 비교하였다.
+
+학생 310명을 대상으로 설문조사를 진행하고, 날씨, 픽업 용이성, 쓰레기 처리, 쾌적함, 면적의 5개 요인에 대한 중요도를 분석하여 입지 선정 가중치를 산출하였다.
+
+설문 결과를 바탕으로 평균 이동 거리 약 389.69m를 커버리지 반경으로 설정하였다. QGIS를 활용하여 후보지별 커버리지를 분석하고, 배달존 2개를 설치하는 조건에서 가능한 6개의 조합을 평가하였다.
+
+분석 결과, 310관 북쪽 출입구 주차장(A)과 310관 지하 3층 테라스(B)의 조합이 목적함수를 최대화하는 최적 입지로 선정되었다.
+
+설문 기반 선호도 분석과 공간 데이터 분석, 수리적 최적화를 결합하여 교내 환경 문제의 데이터 기반 해결 방안을 제시하였다.`, links:[]},
+    {icon:'🧠', category:'Scientific AI', title:'Reliable AI for Science',
+     description:'Studying how AI systems reason with scientific evidence.',
+     image:'', period:'', award:'', role:'', details:'Add the project background, approach, and findings here.', links:[]},
+    {icon:'🎧', category:'Biomedical AI', title:'Speech & Health',
+     description:'Machine learning for speech-based biomedical analysis.',
+     image:'', period:'', award:'', role:'', details:'Add your contribution, experiments, and project outcomes here.', links:[]},
+    {icon:'🏆', category:'Awards & Competitions', title:'Competition & Award Portfolio',
+     description:'A place to document competitions, awards, and team projects.',
+     image:'', period:'', award:'', role:'', details:'Replace this example with an actual competition, your award, team role, and what you built.', links:[]}
   ],
   research:[
     {title:'Computational Biology',description:'Modeling biological responses and making sense of high-dimensional molecular data.'},
@@ -96,14 +142,19 @@ case 'about':return `<div class="app-padding"><p class="section-label">HELLO / A
 <h2 class="about-section-title">Research Lab</h2>
 <a class="lab-link" href="https://ikwak2.github.io/" target="_blank" rel="noopener noreferrer"><span><strong>Artificial Intelligence and Data Science Lab</strong><small>CAU ET · Chung-Ang University</small></span><span class="link-arrow" aria-hidden="true">↗</span></a>
 <div class="quicklinks"><button class="linkbtn primary" data-launch="projects">Explore projects ↗</button><button class="linkbtn" data-launch="contact">Get in touch</button></div></div>`;
-case 'explorer':return `<div class="fileexplorer"><div class="explorer-toolbar">⌂ <span class="crumb">This PC › Chaerin's Workspace</span> ✧</div><div class="explorer-content">${[{id:'about',icon:'📄',name:'About Me',detail:'Profile document'},{id:'projects',icon:'📁',name:'Projects',detail:'4 research explorations'},{id:'research',icon:'🧬',name:'Research',detail:'Areas of interest'},{id:'notes',icon:'📝',name:'Notes.txt',detail:'Personal notes'},{id:'contact',icon:'✉️',name:'Contact',detail:'Ways to connect'},{id:'settings',icon:'🖼️',name:'Appearance',detail:'Desktop personalization'}].map(f=>`<button class="folder-tile" data-launch="${f.id}"><span>${f.icon}</span><b>${f.name}</b><small>${f.detail}</small></button>`).join('')}</div></div>`;
-case 'projects':return `<div class="app-padding"><p class="section-label">SELECTED WORK / RESEARCH PROJECTS</p><h1>Ideas under exploration.</h1><p class="lead">A selection of research directions and questions I am working on. These are research themes, not claims of published results.</p><div class="project-list">${CONFIG.projects.map(p=>`<article class="project-card"><div class="project-art">${p.icon}</div><div class="project-body"><small>${safe(p.category)}</small><h3>${safe(p.title)}</h3><p>${safe(p.description)}</p></div></article>`).join('')}</div></div>`;
+case 'explorer':return `<div class="fileexplorer"><div class="explorer-toolbar">⌂ <span class="crumb">This PC › Chaerin's Workspace</span> ✧</div><div class="explorer-content">${[{id:'about',icon:'📄',name:'About Me',detail:'Profile document'},{id:'projects',icon:'📁',name:'Projects',detail:`${CONFIG.projects.length} projects & achievements`},{id:'research',icon:'🧬',name:'Research',detail:'Areas of interest'},{id:'notes',icon:'📝',name:'Notes.txt',detail:'Personal notes'},{id:'contact',icon:'✉️',name:'Contact',detail:'Ways to connect'},{id:'settings',icon:'🖼️',name:'Appearance',detail:'Desktop personalization'}].map(f=>`<button class="folder-tile" data-launch="${f.id}"><span>${f.icon}</span><b>${f.name}</b><small>${f.detail}</small></button>`).join('')}</div></div>`;
+case 'projects':return `<div class="app-padding"><p class="section-label">PORTFOLIO / SELECTED PROJECTS</p><h1>Projects & achievements.</h1><p class="lead">Explore research projects, competitions, and work in progress. Click a card for more details.</p><div class="project-list">${CONFIG.projects.map((p,i)=>`<button type="button" class="project-card" data-project="${i}" aria-label="View ${safe(p.title)} details"><div class="project-art">${p.image?`<img src="${safe(p.image)}" alt="${safe(p.title)} thumbnail" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="project-image-fallback">${p.icon}</span>`:`<span class="project-placeholder">${p.icon}</span>`}</div><div class="project-body"><small>${safe(p.category)}</small><h3>${safe(p.title)}</h3><p>${safe(p.description)}</p>${p.award?`<div class="project-foot">🏆 ${safe(p.award)}</div>`:`<div class="project-foot">View project →</div>`}</div></button>`).join('')}</div></div>`;
 case 'research':return `<div class="app-padding"><p class="section-label">RESEARCH / INTERESTS</p><h1>What I care about.</h1><p class="lead">At the intersection of intelligence, data, and scientific questions.</p>${CONFIG.research.map((r,i)=>`<div class="research-row"><span class="num">0${i+1}</span><div><h3>${safe(r.title)}</h3><p>${safe(r.description)}</p></div></div>`).join('')}</div>`;
 case 'notes':return `<div class="notepad"><div class="note-toolbar">Notes.txt &nbsp;·&nbsp; Personal scratchpad <span style="margin-left:auto">Autosaved in this browser</span></div><textarea id="note-editor" aria-label="Personal notes" spellcheck="false" placeholder="Write something here...">${safe(localStorage.getItem('chaerin-note')||'Hello, world!\n\nWelcome to my research desktop.\n\nFeel free to explore the apps and discover what I am working on.\n\n— Chaerin')}</textarea></div>`;
 case 'contact':return `<div class="app-padding"><p class="section-label">CONTACT / SAY HELLO</p><h1>Let's connect.</h1><p class="lead">Interested in AI, biology, research, or building thoughtful things? Find me here.</p><div class="info-columns"><div class="info-box"><h3>GitHub</h3><p>Projects, experiments, and code.</p><div class="quicklinks"><a class="linkbtn primary" href="${safe(CONFIG.github)}" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a></div></div><div class="info-box"><h3>Email</h3><p>${CONFIG.email?safe(CONFIG.email):'Contact email not published yet.'}</p>${CONFIG.email?`<div class="quicklinks"><a class="linkbtn" href="mailto:${encodeURIComponent(CONFIG.email)}">Send email ↗</a></div>`:''}</div></div></div>`;
 case 'settings':return `<div class="app-padding"><p class="section-label">PERSONALIZATION / SETTINGS</p><h1>Make it yours.</h1><p class="lead">Choose a wallpaper for the desktop. Your preference will be remembered in this browser.</p><h3 style="font:600 14px 'Space Grotesk';margin:27px 0 6px">Desktop wallpaper</h3><div class="settings-grid">${[['blue','Ocean blue'],['warm','Soft sunset'],['green','Botanical'],['stars','Night sky']].map(([key,label])=>`<label><button class="wall-swatch ${key} ${wall===key?'selected':''}" aria-label="${label}" data-wall="${key}"></button>${label}</label>`).join('')}</div><p class="setting-desc" style="margin-top:30px">Designed as an interactive personal portfolio, not a full operating system. Its apps are lightweight and work entirely in your browser.</p></div>`;
 case 'terminal':return `<div class="terminal" id="terminal-output"><div class="welcome">ChaerinOS Terminal [Version 1.0.0]</div><div class="muted">Type 'help' to see available commands.</div><br><div id="term-lines"></div><form id="term-form" autocomplete="off"><span class="prompt">visitor@chaerin:~$</span><input id="term-input" aria-label="Terminal command" autocapitalize="off" autocomplete="off" spellcheck="false"></form></div>`;
 default:return '';}}
+function showProjectDetail(body,index){
+  const p=CONFIG.projects[index]; if(!p)return;
+  body.innerHTML=`<div class="app-padding"><button type="button" class="project-detail-back" data-project-back>← All projects</button><p class="section-label">${safe(p.category)}</p><h1>${safe(p.title)}</h1><p class="lead">${safe(p.description)}</p><div class="project-detail-hero">${p.image?`<img src="${safe(p.image)}" alt="${safe(p.title)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="detail-fallback">${p.icon}</span>`:`<span>${p.icon}</span>`}</div>${(p.period||p.award||p.role)?`<div class="project-detail-meta">${p.period?`<div><strong>Period</strong><span>${safe(p.period)}</span></div>`:''}${p.award?`<div><strong>Award / Recognition</strong><span>${safe(p.award)}</span></div>`:''}${p.role?`<div><strong>My Role</strong><span>${safe(p.role)}</span></div>`:''}</div>`:''}<h2 style="font-size:18px;color:#1a2740;margin-top:24px">About this project</h2><p class="project-detail-description">${safe(p.details||p.description)}</p><div class="project-detail-links">${(p.links||[]).filter(link=>/^https?:\/\//i.test(link.url)).map(link=>`<a class="linkbtn" href="${safe(link.url)}" target="_blank" rel="noopener noreferrer">${safe(link.label)} ↗</a>`).join('')}</div></div>`;
+  body.scrollTop=0;
+}
 function makeButton(symbol,title,fn,cls=''){const b=E('button',cls,symbol);b.title=title;b.type='button';b.addEventListener('click',e=>{e.stopPropagation();fn()});return b}
 function focusWindow(id){const obj=windows.get(id);if(!obj)return;obj.el.style.zIndex=++highest;for(let o of windows.values())o.el.classList.toggle('focused',o===obj);renderTasks()}
 function minimizeWindow(id){let o=windows.get(id);if(!o)return;o.minimized=true;o.el.classList.add('minimized');renderTasks()}
@@ -112,7 +163,7 @@ function closeWindow(id){let o=windows.get(id);if(!o)return;o.el.remove();window
 function maximizeWindow(id){let o=windows.get(id);if(!o)return;o.maximized=!o.maximized;o.el.classList.toggle('maximized',o.maximized);focusWindow(id)}
 function openApp(id){if(!APPS.some(a=>a.id===id))return;$('#start-menu').classList.add('hidden');$('#start-button').classList.remove('active');if(windows.has(id)){restoreWindow(id);return}let app=APPS.find(a=>a.id===id);let el=E('section','window');el.setAttribute('aria-label',app.title);el.dataset.app=id;let mobile=innerWidth<750;let pos={x:Math.max(12,Math.min(155+cascade*28,innerWidth-450)),y:Math.max(10,Math.min(65+cascade*24,innerHeight-400))};cascade=(cascade+1)%7;let w=id==='explorer'?690:id==='terminal'?680:740,h=id==='terminal'?440:540;el.style.cssText=`left:${mobile?8:pos.x}px;top:${mobile?8:pos.y}px;width:${mobile?innerWidth-16:Math.min(w,innerWidth-30)}px;height:${mobile?innerHeight-80:Math.min(h,innerHeight-100)}px;z-index:${++highest}`;
 let bar=E('div','window-bar');bar.append(E('span','window-icon',app.icon),E('span','window-title',app.title));let buttons=E('div','window-buttons');buttons.append(makeButton('−','Minimize',()=>minimizeWindow(id)),makeButton('□','Maximize / Restore',()=>maximizeWindow(id)),makeButton('×','Close',()=>closeWindow(id),'close'));bar.append(buttons);el.append(bar);let body=E('div','window-body');body.innerHTML=appMarkup(id);el.append(body);let res=E('div','window-resize');el.append(res);$('#windows').append(el);windows.set(id,{id,app,el,minimized:false,maximized:false});el.addEventListener('pointerdown',()=>focusWindow(id));bar.addEventListener('dblclick',e=>{if(!e.target.closest('button'))maximizeWindow(id)});dragHandle(bar,el,id,false);dragHandle(res,el,id,true);
-body.addEventListener('click',e=>{let launch=e.target.closest('[data-launch]');if(launch)openApp(launch.dataset.launch);let sw=e.target.closest('[data-wall]');if(sw){setWallpaper(sw.dataset.wall);body.innerHTML=appMarkup('settings')}});
+body.addEventListener('click',e=>{let launch=e.target.closest('[data-launch]');if(launch)openApp(launch.dataset.launch);let card=e.target.closest('[data-project]');if(card&&id==='projects')showProjectDetail(body,Number(card.dataset.project));if(e.target.closest('[data-project-back]')&&id==='projects'){body.innerHTML=appMarkup('projects');body.scrollTop=0;}let sw=e.target.closest('[data-wall]');if(sw){setWallpaper(sw.dataset.wall);body.innerHTML=appMarkup('settings')}});
 if(id==='terminal')setupTerminal(body);if(id==='notes'){const note=body.querySelector('#note-editor');note?.addEventListener('input',()=>{try{localStorage.setItem('chaerin-note',note.value)}catch{}})}
 focusWindow(id);renderTasks()}
 function dragHandle(handle,el,id,resize){handle.addEventListener('pointerdown',e=>{if(e.button!==0||e.target.closest('button')||windows.get(id)?.maximized||innerWidth<750)return;e.preventDefault();focusWindow(id);let x=e.clientX,y=e.clientY,rect=el.getBoundingClientRect(),start={left:rect.left,top:rect.top,w:rect.width,h:rect.height};handle.setPointerCapture(e.pointerId);function move(ev){let dx=ev.clientX-x,dy=ev.clientY-y;if(resize){el.style.width=Math.max(310,Math.min(innerWidth-start.left-4,start.w+dx))+'px';el.style.height=Math.max(240,Math.min(innerHeight-start.top-69,start.h+dy))+'px'}else{el.style.left=Math.max(0,Math.min(innerWidth-80,start.left+dx))+'px';el.style.top=Math.max(0,Math.min(innerHeight-120,start.top+dy))+'px'}}function up(){handle.removeEventListener('pointermove',move);handle.removeEventListener('pointerup',up);handle.removeEventListener('pointercancel',up)}handle.addEventListener('pointermove',move);handle.addEventListener('pointerup',up);handle.addEventListener('pointercancel',up)})}
