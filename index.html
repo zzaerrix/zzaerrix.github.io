@@ -104,6 +104,24 @@
   grid-template-rows: repeat(3, 110px);
   gap: 10px;
 }
+
+/* Subtle desktop interaction hint below the app shortcuts */
+.desktop-hint {
+  position: absolute;
+  top: 501px;
+  left: 32px;
+  z-index: 2;
+  color: #dbe8ff;
+  font: 500 11px/1.5 'JetBrains Mono', monospace;
+  letter-spacing: 0;
+  white-space: nowrap;
+  opacity: .9;
+  pointer-events: none;
+  text-shadow: 0 2px 12px rgba(5, 15, 40, .4);
+}
+@media (max-width: 750px) {
+  .desktop-hint { top: 468px; left: 16px; font-size: 10px; }
+}
 </style>
 
 
@@ -113,6 +131,7 @@
 <div class="desktop" id="desktop"><div class="wallpaper" id="wallpaper"></div>
 <div class="topline"><div><div class="eyebrow">Welcome to my Homepage</div><div class="brand">chaerinlee<span style="color:#bceaff"></span></div></div><div class="tagline">An interactive space for<br>science, code & curiosity</div></div>
 <div class="desktop-icons" id="desktop-icons"></div>
+<div class="desktop-hint">↖ Double-click an icon to explore</div>
 <div class="character-widget" id="welcome">
   <img src="images/character.png" alt="Chaerin's character">
 </div>
@@ -216,7 +235,7 @@ function minimizeWindow(id){let o=windows.get(id);if(!o)return;o.minimized=true;
 function restoreWindow(id){let o=windows.get(id);if(!o)return;o.minimized=false;o.el.classList.remove('minimized');focusWindow(id)}
 function closeWindow(id){let o=windows.get(id);if(!o)return;o.el.remove();windows.delete(id);renderTasks()}
 function maximizeWindow(id){let o=windows.get(id);if(!o)return;o.maximized=!o.maximized;o.el.classList.toggle('maximized',o.maximized);focusWindow(id)}
-function openApp(id){if(!APPS.some(a=>a.id===id))return;$('#start-menu').classList.add('hidden');$('#start-button').classList.remove('active');if(windows.has(id)){restoreWindow(id);return}let app=APPS.find(a=>a.id===id);let el=E('section','window');el.setAttribute('aria-label',app.title);el.dataset.app=id;let mobile=innerWidth<750;let pos={x:Math.max(12,Math.min(155+cascade*28,innerWidth-450)),y:Math.max(10,Math.min(65+cascade*24,innerHeight-400))};cascade=(cascade+1)%7;let w=id==='explorer'?690:id==='terminal'?680:740,h=id==='terminal'?440:540;el.style.cssText=`left:${mobile?8:pos.x}px;top:${mobile?8:pos.y}px;width:${mobile?innerWidth-16:Math.min(w,innerWidth-30)}px;height:${mobile?innerHeight-80:Math.min(h,innerHeight-100)}px;z-index:${++highest}`;
+function openApp(id){if(!APPS.some(a=>a.id===id))return;$('#start-menu').classList.add('hidden');$('#start-button').classList.remove('active');if(windows.has(id)){restoreWindow(id);return}let app=APPS.find(a=>a.id===id);let el=E('section','window');el.setAttribute('aria-label',app.title);el.dataset.app=id;let mobile=innerWidth<750;let pos={x:Math.max(12,Math.min(155+cascade*28,innerWidth-450)),y:Math.max(10,Math.min(65+cascade*24,innerHeight-400))};cascade=(cascade+1)%7;let w=id==='explorer'?690:id==='terminal'?680:740,h=id==='terminal'?440:540;if(id==='about'&&!mobile){pos.x=Math.max(8,(innerWidth-Math.min(w,innerWidth-30))/2);pos.y=Math.max(8,(innerHeight-Math.min(h,innerHeight-100))/2)}el.style.cssText=`left:${mobile?8:pos.x}px;top:${mobile?8:pos.y}px;width:${mobile?innerWidth-16:Math.min(w,innerWidth-30)}px;height:${mobile?innerHeight-80:Math.min(h,innerHeight-100)}px;z-index:${++highest}`;
 let bar=E('div','window-bar');bar.append(E('span','window-icon',app.icon),E('span','window-title',app.title));let buttons=E('div','window-buttons');buttons.append(makeButton('−','Minimize',()=>minimizeWindow(id)),makeButton('□','Maximize / Restore',()=>maximizeWindow(id)),makeButton('×','Close',()=>closeWindow(id),'close'));bar.append(buttons);el.append(bar);let body=E('div','window-body');body.innerHTML=appMarkup(id);el.append(body);let res=E('div','window-resize');el.append(res);$('#windows').append(el);windows.set(id,{id,app,el,minimized:false,maximized:false});el.addEventListener('pointerdown',()=>focusWindow(id));bar.addEventListener('dblclick',e=>{if(!e.target.closest('button'))maximizeWindow(id)});dragHandle(bar,el,id,false);dragHandle(res,el,id,true);
 body.addEventListener('click',e=>{let launch=e.target.closest('[data-launch]');if(launch)openApp(launch.dataset.launch);let card=e.target.closest('[data-project]');if(card&&id==='projects')showProjectDetail(body,Number(card.dataset.project));if(e.target.closest('[data-project-back]')&&id==='projects'){body.innerHTML=appMarkup('projects');body.scrollTop=0;}let sw=e.target.closest('[data-wall]');if(sw){setWallpaper(sw.dataset.wall);body.innerHTML=appMarkup('settings')}});
 if(id==='terminal')setupTerminal(body);
