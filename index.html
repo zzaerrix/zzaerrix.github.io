@@ -69,13 +69,40 @@
 .project-detail-meta span{font-size:12px;color:#20385e;font-weight:600;line-height:1.5}
 .project-detail-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
 @media(max-width:570px){.project-list{grid-template-columns:1fr}.project-detail-meta{grid-template-columns:1fr}}
+
+/* Main character */
+.character-widget {
+  position: absolute;
+  left: 60%;
+  top: 51%;
+  transform: translate(-30%, -50%);
+  width: min(560px, 48vw);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.character-widget img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,.15));
+  animation: characterFloat 5s ease-in-out infinite;
+}
+
+@keyframes characterFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
 </style>
 </head>
 <body>
 <div class="desktop" id="desktop"><div class="wallpaper" id="wallpaper"></div>
 <div class="topline"><div><div class="eyebrow">My Homepage</div><div class="brand">chaerinlee<span style="color:#bceaff"></span></div></div><div class="tagline">An interactive space for<br>science, code & curiosity</div></div>
 <div class="desktop-icons" id="desktop-icons"></div>
-<div class="welcome-widget" id="welcome"><span class="mini">WELCOME TO MY DIGITAL SPACE</span><h1>Hello,<br><span>World.</span></h1><p>Research, ideas, and small discoveries. Open an app to get to know my work.</p><span class="hint">↖ Double-click an icon to explore</span></div>
+<div class="character-widget" id="welcome">
+  <img src="images/character.png" alt="Chaerin's character">
+</div>
 <div id="windows"></div>
 <div id="start-menu" class="start-menu hidden"><div class="start-header"><div class="avatar">🤖</div><div><b>Chaerin Lee</b><small>Master's Student · AI & Bioinformatics</small></div></div><h4>Explore</h4><div id="start-apps" class="menu-grid"></div><div class="start-bottom"><span>chaerinOS · v1.0</span><button id="reset-btn">Show desktop</button></div></div>
 <div id="toast" class="toast hidden"></div>
