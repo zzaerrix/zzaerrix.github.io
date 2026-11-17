@@ -94,34 +94,19 @@
   50% { transform: translateY(-10px); }
 }
 
-</style>
-
-/* Character and desktop icon size adjustments */
-.character-widget {
-  width: min(515px, 44vw);
-}
-
-.shortcut {
-  width: 102px;
-  min-height: 101px;
-}
-
-.shortcut .icon-tile {
-  width: 53px;
-  height: 53px;
-  font-size: 30px;
-}
-
-.shortcut .icon-label {
-  font-size: 13px;
-}
-
+/* Character slightly smaller; desktop icons slightly larger */
+.character-widget { width: min(515px, 44vw); }
+.shortcut { width: 102px; min-height: 101px; }
+.shortcut .icon-tile { width: 53px; height: 53px; font-size: 30px; }
+.shortcut .icon-label { font-size: 13px; }
 .desktop-icons {
+  grid-template-columns: repeat(2, 108px);
   grid-template-rows: repeat(3, 110px);
-  grid-auto-columns: 108px;
   gap: 10px;
 }
 </style>
+
+
 
 </head>
 <body>
