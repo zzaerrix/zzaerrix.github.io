@@ -29,6 +29,20 @@
   .welcome-widget{bottom:32px}
   .window:not(.maximized){height:calc(100% - 16px)!important}
 }
+
+/* ABOUT ME — profile photo and academic timeline */
+.about-intro{display:grid;grid-template-columns:155px minmax(0,1fr);gap:26px;align-items:start;margin-bottom:20px}
+.about-photo{width:155px;aspect-ratio:4/5;border-radius:16px;position:relative;overflow:hidden;background:linear-gradient(150deg,#dce9ff,#f2f6ff);border:1px solid #dbe5f4;display:grid;place-items:center}
+.about-photo-fallback{font:600 36px 'Space Grotesk',sans-serif;color:#8096bf;letter-spacing:-.07em}
+.about-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.about-intro .lead{margin-top:8px}.about-intro h1{margin-bottom:9px}
+.about-section-title{margin:27px 0 12px;font:600 17px 'Space Grotesk',sans-serif;color:#172642;letter-spacing:-.025em}
+.education-list{display:grid;gap:11px}.education-item{border:1px solid #e2e9f4;background:#fbfcff;border-radius:12px;padding:16px 18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:start}
+.education-item h3{margin:0 0 5px;font:600 14px 'Space Grotesk',sans-serif;color:#223554}
+.education-item p{margin:0;color:#5d6d85;font-size:12px;line-height:1.65}.education-date{font:500 11px/1.6 'JetBrains Mono',monospace;color:#4b69aa;white-space:nowrap}
+.lab-link{display:flex;align-items:center;justify-content:space-between;gap:15px;border:1px solid #dae5f6;border-radius:12px;padding:16px 18px;background:#f3f7ff;color:#234478;text-decoration:none;transition:background .2s,border-color .2s}.lab-link:hover{background:#eaf2ff;border-color:#a8c5f0;text-decoration:none}
+.lab-link strong{display:block;font-size:13px;margin-bottom:3px}.lab-link small{font-size:11px;color:#5e7394}.lab-link .link-arrow{font-size:22px;color:#426bbb}
+@media(max-width:580px){.about-intro{grid-template-columns:105px minmax(0,1fr);gap:17px}.about-photo{width:105px}.about-photo-fallback{font-size:29px}.education-item{grid-template-columns:1fr}.education-date{white-space:normal}}
 </style>
 </head>
 <body>
@@ -72,7 +86,16 @@ let windows=new Map(),highest=50,cascade=0,wall='blue';
 const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function showToast(msg){let t=$('#toast');t.textContent=msg;t.classList.remove('hidden');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>t.classList.add('hidden'),2700)}
 function appMarkup(id){switch(id){
-case 'about':return `<div class="app-padding"><p class="section-label">HELLO / ABOUT ME</p><h1>Hi, I'm ${safe(CONFIG.name)}.</h1><p class="lead">${safe(CONFIG.headline)}</p><p class="lead" style="font-size:13px">${safe(CONFIG.about)}</p><div class="pill-row">${CONFIG.interests.map(i=>`<span class="pill">${safe(i)}</span>`).join('')}</div><div class="info-columns"><div class="info-box"><h3>What I'm exploring</h3><p>Computational methods that connect AI, biological systems, and meaningful scientific questions.</p></div><div class="info-box"><h3>A little about me</h3><p>${safe(CONFIG.role)} · ${safe(CONFIG.location)}<br>Always learning, experimenting, and building.</p></div></div><div class="quicklinks"><button class="linkbtn primary" data-launch="projects">Explore projects ↗</button><button class="linkbtn" data-launch="contact">Get in touch</button></div></div>`;
+case 'about':return `<div class="app-padding"><p class="section-label">HELLO / ABOUT ME</p>
+<div class="about-intro"><div class="about-photo"><span class="about-photo-fallback">CL</span><img src="profile.jpg" alt="Portrait of Chaerin Lee" onerror="this.remove()"></div>
+<div><h1>Hi, I'm ${safe(CONFIG.name)}.</h1><p class="lead">${safe(CONFIG.headline)}</p><p class="lead" style="font-size:13px">${safe(CONFIG.about)}</p></div></div>
+<div class="pill-row">${CONFIG.interests.map(i=>`<span class="pill">${safe(i)}</span>`).join('')}</div>
+<h2 class="about-section-title">Education</h2>
+<div class="education-list"><div class="education-item"><div><h3>Chung-Ang University · Graduate School</h3><p>Department of Statistics and Data Science<br>Currently enrolled</p></div><span class="education-date">2026.09 – Present</span></div>
+<div class="education-item"><div><h3>Chung-Ang University</h3><p>Applied Statistics / Biomedical Engineering</p></div><span class="education-date">2022.03 – 2026.08</span></div></div>
+<h2 class="about-section-title">Research Lab</h2>
+<a class="lab-link" href="https://ikwak2.github.io/" target="_blank" rel="noopener noreferrer"><span><strong>Artificial Intelligence and Data Science Lab</strong><small>CAU ET · Chung-Ang University</small></span><span class="link-arrow" aria-hidden="true">↗</span></a>
+<div class="quicklinks"><button class="linkbtn primary" data-launch="projects">Explore projects ↗</button><button class="linkbtn" data-launch="contact">Get in touch</button></div></div>`;
 case 'explorer':return `<div class="fileexplorer"><div class="explorer-toolbar">⌂ <span class="crumb">This PC › Chaerin's Workspace</span> ✧</div><div class="explorer-content">${[{id:'about',icon:'📄',name:'About Me',detail:'Profile document'},{id:'projects',icon:'📁',name:'Projects',detail:'4 research explorations'},{id:'research',icon:'🧬',name:'Research',detail:'Areas of interest'},{id:'notes',icon:'📝',name:'Notes.txt',detail:'Personal notes'},{id:'contact',icon:'✉️',name:'Contact',detail:'Ways to connect'},{id:'settings',icon:'🖼️',name:'Appearance',detail:'Desktop personalization'}].map(f=>`<button class="folder-tile" data-launch="${f.id}"><span>${f.icon}</span><b>${f.name}</b><small>${f.detail}</small></button>`).join('')}</div></div>`;
 case 'projects':return `<div class="app-padding"><p class="section-label">SELECTED WORK / RESEARCH PROJECTS</p><h1>Ideas under exploration.</h1><p class="lead">A selection of research directions and questions I am working on. These are research themes, not claims of published results.</p><div class="project-list">${CONFIG.projects.map(p=>`<article class="project-card"><div class="project-art">${p.icon}</div><div class="project-body"><small>${safe(p.category)}</small><h3>${safe(p.title)}</h3><p>${safe(p.description)}</p></div></article>`).join('')}</div></div>`;
 case 'research':return `<div class="app-padding"><p class="section-label">RESEARCH / INTERESTS</p><h1>What I care about.</h1><p class="lead">At the intersection of intelligence, data, and scientific questions.</p>${CONFIG.research.map((r,i)=>`<div class="research-row"><span class="num">0${i+1}</span><div><h3>${safe(r.title)}</h3><p>${safe(r.description)}</p></div></div>`).join('')}</div>`;
