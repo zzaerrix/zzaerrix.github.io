@@ -95,6 +95,35 @@
 }
 
 </style>
+
+/* Character: slightly smaller */
+.character-widget {
+  width: min(515px, 44vw);
+}
+
+/* Desktop app icons: slightly larger */
+.shortcut {
+  width: 102px;
+  min-height: 101px;
+}
+
+.shortcut .icon-tile {
+  width: 53px;
+  height: 53px;
+  font-size: 30px;
+}
+
+.shortcut .icon-label {
+  font-size: 13px;
+}
+
+/* Adjust spacing between app icons */
+.desktop-icons {
+  grid-template-rows: repeat(3, 110px);
+  grid-auto-columns: 108px;
+  gap: 10px;
+}
+
 </head>
 <body>
 <div class="desktop" id="desktop"><div class="wallpaper" id="wallpaper"></div>
@@ -119,7 +148,7 @@ const CONFIG={
   about:'I am a graduate student interested in the intersection of machine learning, computational biology, and scientific discovery. I enjoy asking meaningful questions and developing data-driven approaches to investigate them.',
   interests:['Computational Biology','Machine Learning','AI for Science','Bioinformatics'],
   github:'https://github.com/zzaerrix',
-  email:'chaern.leee@gmail.com',
+  email:'zzaerrix@cau.ac.kr',
   // PROJECTS: Edit each card here. Images go in the images/ folder.
   // Leave image:'' to use an elegant placeholder. Add actual award names only when verified.
   projects:[
