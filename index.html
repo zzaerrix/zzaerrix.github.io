@@ -96,12 +96,11 @@
 
 </style>
 
-/* Character: slightly smaller */
+/* Character and desktop icon size adjustments */
 .character-widget {
   width: min(515px, 44vw);
 }
 
-/* Desktop app icons: slightly larger */
 .shortcut {
   width: 102px;
   min-height: 101px;
@@ -117,17 +116,17 @@
   font-size: 13px;
 }
 
-/* Adjust spacing between app icons */
 .desktop-icons {
   grid-template-rows: repeat(3, 110px);
   grid-auto-columns: 108px;
   gap: 10px;
 }
+</style>
 
 </head>
 <body>
 <div class="desktop" id="desktop"><div class="wallpaper" id="wallpaper"></div>
-<div class="topline"><div><div class="eyebrow">My Homepage</div><div class="brand">chaerinlee<span style="color:#bceaff"></span></div></div><div class="tagline">An interactive space for<br>science, code & curiosity</div></div>
+<div class="topline"><div><div class="eyebrow">Welcome to my Homepage</div><div class="brand">chaerinlee<span style="color:#bceaff"></span></div></div><div class="tagline">An interactive space for<br>science, code & curiosity</div></div>
 <div class="desktop-icons" id="desktop-icons"></div>
 <div class="character-widget" id="welcome">
   <img src="images/character.png" alt="Chaerin's character">
