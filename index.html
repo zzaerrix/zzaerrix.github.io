@@ -160,7 +160,7 @@
 </head>
 <body>
 <div class="desktop" id="desktop"><div class="wallpaper" id="wallpaper"></div>
-<div class="topline"><div><div class="eyebrow">Welcome to my Space</div><div class="brand">chaerinlee<span style="color:#bceaff"></span></div></div><div class="tagline">Bio & AI</div>
+<div class="topline"><div><div class="eyebrow">Welcome to my Space</div><div class="brand">chaerinlee<span style="color:#bceaff"></span></div></div><div class="tagline">Bio & AI</div></div>
 <div class="desktop-icons" id="desktop-icons"></div>
 <div class="desktop-hint">↖ Double-click an icon to explore</div>
 <div class="character-widget" id="welcome">
@@ -178,8 +178,7 @@
    ============================================================= */
 const CONFIG={
   name:'Chaerin Lee', role:"Master's Student", location:'South Korea',
-  headline:'Exploring how artificial intelligence can help us understand biology and complex data.',
-  about:'I am a graduate student interested in the intersection of machine learning, computational biology, and scientific discovery. I enjoy asking meaningful questions and developing data-driven approaches to investigate them.',
+  headline:'I am a graduate student interested in the intersection of machine learning, computational biology, and scientific discovery. I enjoy asking meaningful questions and developing data-driven approaches to investigate them.',
   interests:['Computational Biology','Machine Learning','AI for Science','Bioinformatics'],
   github:'https://github.com/zzaerrix',
   email:'zzaerrix@cau.ac.kr',
@@ -241,7 +240,7 @@ function showToast(msg){let t=$('#toast');t.textContent=msg;t.classList.remove('
 function appMarkup(id){switch(id){
 case 'about':return `<div class="app-padding"><p class="section-label">HELLO / ABOUT ME</p>
 <div class="about-intro"><div class="about-photo"><span class="about-photo-fallback">CL</span><img src="profile.jpg" alt="Portrait of Chaerin Lee" onerror="this.remove()"></div>
-<div><h1>Hi, I'm ${safe(CONFIG.name)}.</h1><p class="lead">${safe(CONFIG.headline)}</p><p class="lead" style="font-size:13px">${safe(CONFIG.about)}</p></div></div>
+<div><h1>Hi, I'm ${safe(CONFIG.name)}.</h1><p class="lead">${safe(CONFIG.headline)}</p></div></div>
 <div class="pill-row">${CONFIG.interests.map(i=>`<span class="pill">${safe(i)}</span>`).join('')}</div>
 <h2 class="about-section-title">Education</h2>
 <div class="education-list"><div class="education-item"><div><h3>Chung-Ang University · Graduate School <img class="education-mascot" src="images/cau-mascot-face.png" alt="" aria-hidden="true"></h3><p>Department of Statistics and Data Science</p></div><span class="education-date">2026.09 – Present</span></div>
