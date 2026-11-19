@@ -153,6 +153,111 @@
 .education-item h3 { display:flex; align-items:center; flex-wrap:wrap; gap:7px; }
 .education-item .education-mascot { width:30px; height:30px; object-fit:contain; flex:none; vertical-align:middle; border-radius:50%; }
 
+
+/* ==========================================================
+   MOBILE EXPERIENCE (phones / small tablets)
+   Desktop styling above stays unchanged.
+   ========================================================== */
+@media (max-width: 750px) {
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  .desktop { height: 100dvh; min-height: 0; overflow: hidden; }
+  .topline { top: max(16px, env(safe-area-inset-top)); left: 20px; right: 20px; z-index: 3; }
+  .topline .eyebrow { font-size: 9px; letter-spacing: .11em; }
+  .topline .brand { font-size: 25px; }
+  .topline .tagline { font-size: 11px; line-height: 1.4; padding-top: 5px; }
+
+  /* Character occupies the upper half, without blocking app touches. */
+  .character-widget {
+    left: 50%; top: 31%; right: auto; bottom: auto;
+    transform: translate(-50%, -50%);
+    width: min(70vw, 285px);
+    max-height: 45dvh;
+    z-index: 1;
+  }
+  .character-widget img { width: 100%; max-height: 45dvh; object-fit: contain; }
+
+  /* Mobile home screen: 3 columns x 2 rows, single tap to launch. */
+  .desktop-icons {
+    position: absolute;
+    left: 50%; top: auto; right: auto;
+    bottom: calc(54px + env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    width: min(360px, calc(100% - 30px));
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, 98px);
+    grid-auto-columns: auto;
+    gap: 12px 6px;
+    z-index: 4;
+    justify-items: center;
+  }
+  .shortcut {
+    width: 100%; max-width: 108px; min-height: 94px;
+    padding: 5px 2px; gap: 7px;
+    touch-action: manipulation;
+  }
+  .shortcut .icon-tile { width: 56px; height: 56px; font-size: 30px; border-radius: 16px; }
+  .shortcut .icon-label { font-size: 12px; line-height: 1.3; }
+  .desktop-hint {
+    top: auto; left: 0; right: 0;
+    bottom: calc(15px + env(safe-area-inset-bottom));
+    font-size: 10px; text-align: center; white-space: normal;
+  }
+  .desktop-hint .desktop-instruction { display: none; }
+  .desktop-hint::after { content: 'Tap an icon to explore'; }
+
+  /* Apps feel like phone screens; close to return to the desktop. */
+  .window, .window:not(.maximized), .window.maximized {
+    position: absolute;
+    top: 0 !important; left: 0 !important;
+    width: 100% !important; height: 100% !important;
+    min-width: 0; min-height: 0;
+    border: 0; border-radius: 0;
+  }
+  .window-bar { padding: 0 14px; padding-top: env(safe-area-inset-top); height: calc(50px + env(safe-area-inset-top)); flex-basis: calc(50px + env(safe-area-inset-top)); cursor: default; }
+  .window-title { font-size: 14px; }
+  .window-buttons button:not(.close) { display: none; }
+  .window-buttons button.close { width: 36px; height: 36px; font-size: 23px; background: #e8eef9; color: #263b5b; }
+  .window-body { min-height: 0; overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding-bottom: env(safe-area-inset-bottom); }
+  .window-resize { display: none; }
+  .app-padding { padding: 24px 20px 40px; }
+  .app-padding h1 { font-size: clamp(25px, 7.2vw, 32px); }
+  .app-padding .lead { font-size: 14px; line-height: 1.75; }
+  .about-intro { grid-template-columns: 95px minmax(0,1fr); gap: 15px; }
+  .about-photo { width: 95px; }
+  .about-intro h1 { font-size: 25px; }
+  .about-intro .lead { font-size: 13px; }
+  .info-columns, .project-list, .project-detail-meta { grid-template-columns: 1fr; }
+  .project-card { min-height: 0; }
+  .project-art { height: 180px; }
+  .project-detail-hero { max-height: none; }
+  .project-detail-hero img { max-height: 290px; }
+  .education-item { grid-template-columns: 1fr; }
+  .education-date { white-space: normal; }
+  .terminal { font-size: 11px; padding: 18px 13px; }
+  .terminal form { flex-wrap: wrap; }
+  .terminal input { min-width: 110px; }
+  .toast { bottom: calc(18px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 750px) and (max-height: 690px) and (orientation: portrait) {
+  .character-widget { top: 29%; width: min(57vw, 210px); }
+  .character-widget img { max-height: 34dvh; }
+  .desktop-icons { grid-template-rows: repeat(2, 83px); bottom: calc(43px + env(safe-area-inset-bottom)); gap: 3px 4px; }
+  .shortcut { min-height: 80px; gap: 4px; }
+  .shortcut .icon-tile { width: 47px; height: 47px; font-size: 26px; }
+  .desktop-hint { bottom: calc(9px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 750px) and (orientation: landscape) {
+  .topline { top: 12px; }
+  .desktop-icons { width: 43%; left: 18px; bottom: 40px; transform: none; grid-template-rows: repeat(2, 75px); gap: 2px; }
+  .shortcut { min-height: 73px; gap: 3px; }
+  .shortcut .icon-tile { width: 44px; height: 44px; font-size: 24px; }
+  .shortcut .icon-label { font-size: 10px; }
+  .character-widget { left: 74%; top: 53%; width: min(38vw, 235px); }
+  .desktop-hint { left: 18px; right: auto; bottom: 8px; text-align: left; }
+}
+
 </style>
 
 
@@ -162,7 +267,7 @@
 <div class="desktop" id="desktop"><div class="wallpaper" id="wallpaper"></div>
 <div class="topline"><div><div class="eyebrow">Welcome to my Space</div><div class="brand">chaerinlee<span style="color:#bceaff"></span></div></div><div class="tagline">Bio & AI</div></div>
 <div class="desktop-icons" id="desktop-icons"></div>
-<div class="desktop-hint">↖ Double-click an icon to explore</div>
+<div class="desktop-hint"><span class="desktop-instruction">↖ Double-click an icon to explore</span></div>
 <div class="character-widget" id="welcome">
   <img src="images/character.png" alt="Chaerin's character">
 </div>
@@ -417,9 +522,9 @@ function renderTasks(){const t=$('#task-items');t.replaceChildren();for(let o of
 function setWallpaper(key){if(!['blue','dark','light'].includes(key))return;wall=key;$('#wallpaper').className='wallpaper'+(key==='blue'?'':' '+key);$('#desktop').classList.toggle('theme-light',key==='light');try{localStorage.setItem('chaerin-wallpaper',key)}catch{}showToast('Wallpaper updated · '+({blue:'Ocean Blue',dark:'Dark Mode',light:'Light Mode'}[key]))}
 function termOutput(lines,command){const container=$('#term-lines');if(!container)return;const line=E('div','result');const prompt=E('span','prompt','visitor@chaerin:~$ ');const c=E('span','',command);line.append(prompt,c);container.append(line);const result=E('div','result',lines);container.append(result);const sc=$('#terminal-output');sc.scrollTop=sc.scrollHeight}
 function setupTerminal(body){const input=body.querySelector('#term-input'),form=body.querySelector('#term-form');const cmds={help:'Available commands:\nhelp       Show this help\nabout      About Chaerin\nresearch   Research interests\nprojects   Project list\ncontact    Contact details\nwhoami     Who am I?\ndate       Current local date and time\nclear      Clear the terminal\nopen APP   Launch an app (about, projects, research...)\nwallpaper  Change wallpaper (blue, dark, light)',about:`${CONFIG.name} — ${CONFIG.role}\n${CONFIG.headline}`,research:CONFIG.research.map(r=>'• '+r.title+' — '+r.description).join('\n'),projects:CONFIG.projects.map((p,i)=>`${i+1}. ${p.title}\n   ${p.description}`).join('\n'),contact:`GitHub: ${CONFIG.github}\nEmail: ${CONFIG.email||'Not published'}`,whoami:'visitor — welcome to ChaerinOS'};form.addEventListener('submit',e=>{e.preventDefault();let raw=input.value.trim();input.value='';if(!raw)return;const parts=raw.split(/\s+/),cmd=parts[0].toLowerCase();if(cmd==='clear'){body.querySelector('#term-lines').replaceChildren();return}let result='';if(cmd==='date')result=new Date().toLocaleString();else if(cmd==='open'){if(APPS.some(a=>a.id===parts[1])){openApp(parts[1]);result='Opening '+parts[1]+'...'}else result='Unknown app. Available: '+APPS.map(a=>a.id).join(', ')}else if(cmd==='wallpaper'){if(['blue','dark','light'].includes(parts[1])){setWallpaper(parts[1]);result='Wallpaper changed to '+parts[1]}else result='Usage: wallpaper blue|dark|light'}else result=cmds[cmd]??`Command not found: ${cmd}. Try 'help'.`;termOutput(result,raw)});input.focus();body.addEventListener('click',e=>{if(e.target.closest('.terminal')&&!e.target.closest('button'))input.focus()})}
-function renderDesktop(){let icons=$('#desktop-icons');for(let app of APPS){let b=E('button','shortcut');b.title='Open '+app.title;b.setAttribute('aria-label','Open '+app.title);b.innerHTML=`<span class="icon-tile">${app.icon}</span><span class="icon-label">${app.title}</span>`;b.addEventListener('dblclick',()=>openApp(app.id));b.addEventListener('click',()=>{if(matchMedia('(pointer:coarse)').matches)openApp(app.id)});icons.append(b);let m=E('button','menu-tile');m.innerHTML=`<span>${app.icon}</span>${app.title}`;m.onclick=()=>openApp(app.id);$('#start-apps').append(m)}}
+function renderDesktop(){let icons=$('#desktop-icons');for(let app of APPS){let b=E('button','shortcut');b.title='Open '+app.title;b.setAttribute('aria-label','Open '+app.title);b.innerHTML=`<span class="icon-tile">${app.icon}</span><span class="icon-label">${app.title}</span>`;b.addEventListener('dblclick',()=>openApp(app.id));b.addEventListener('click',()=>{if(matchMedia('(pointer:coarse)').matches || innerWidth<=750)openApp(app.id)});icons.append(b);let m=E('button','menu-tile');m.innerHTML=`<span>${app.icon}</span>${app.title}`;m.onclick=()=>openApp(app.id);$('#start-apps').append(m)}}
 $('#start-button').addEventListener('click',e=>{e.stopPropagation();let menu=$('#start-menu');menu.classList.toggle('hidden');$('#start-button').classList.toggle('active',!menu.classList.contains('hidden'))});document.addEventListener('pointerdown',e=>{if(!e.target.closest('#start-menu')&&!e.target.closest('#start-button')){$('#start-menu').classList.add('hidden');$('#start-button').classList.remove('active')}});$('#reset-btn').addEventListener('click',()=>{for(let o of windows.values())minimizeWindow(o.id);$('#start-menu').classList.add('hidden');$('#start-button').classList.remove('active')});document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#start-menu').classList.add('hidden');$('#start-button').classList.remove('active')}if(e.shiftKey&&e.key==='Escape'){e.preventDefault();$('#start-button').click()}});
-function updateClock(){let d=new Date();$('#clock').innerHTML=`<span>${d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</span><small>${d.toLocaleDateString([], {month:'short',day:'numeric',year:'numeric'})}</small>`}updateClock();setInterval(updateClock,20000);renderDesktop();try{let saved=localStorage.getItem('chaerin-wallpaper');if(['blue','dark','light'].includes(saved)){wall=saved;$('#wallpaper').className='wallpaper'+(saved==='blue'?'':' '+saved);$('#desktop').classList.toggle('theme-light',saved==='light')}}catch{}setTimeout(()=>openApp('about'),400);
+function updateClock(){let d=new Date();$('#clock').innerHTML=`<span>${d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</span><small>${d.toLocaleDateString([], {month:'short',day:'numeric',year:'numeric'})}</small>`}updateClock();setInterval(updateClock,20000);renderDesktop();try{let saved=localStorage.getItem('chaerin-wallpaper');if(['blue','dark','light'].includes(saved)){wall=saved;$('#wallpaper').className='wallpaper'+(saved==='blue'?'':' '+saved);$('#desktop').classList.toggle('theme-light',saved==='light')}}catch{}if(innerWidth>750)setTimeout(()=>openApp('about'),400);
 </script>
 </body>
 </html>
