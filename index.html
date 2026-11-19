@@ -184,23 +184,73 @@ const CONFIG={
   email:'zzaerrix@cau.ac.kr',
   // PROJECTS: Edit each card here. Images go in the images/ folder.
   // Leave image:'' to use an elegant placeholder. Add actual award names only when verified.
-  projects:[
-    {icon:'🧬', category:'Spatial Data Analysis', title:'배달존 최적입지 선정',
-     description:'Identifying optimal delivery zone locations through spatial data analysis.',
-     image:'images/project1.jpg', period:'2023.04 - 2023.06', award:'중앙대학교 제4회 경영경제대학 학술제 장려상(2023.06)', role:'Analysis', details:`교내 배달음식 이용에 따라 발생하는 쓰레기 분리배출 문제를 해결하기 위해 배달존의 최적 설치 위치를 선정한 프로젝트이다.
+  
+projects:[
+  {
+    icon:'',
+    category:'Speech-based Biomedical AI',
+    title:'SAND (Speech Analysis for Neurodegenerative Diseases',
+    description:'딥러닝 음성 임베딩과 음향학적 특징을 결합하여 ALS 환자의 발화 기반 질병 중증도를 예측하는 연구.',
+    image:'images/project3.png',
+    period:'2025.09-2025.12',
+    award:'',
+    role:'',
+    details:`근위축성 측삭경화증(Amyotrophic Lateral Sclerosis, ALS) 환자의 음성 데이터를 활용하여 질병 중증도를 예측하는 AI 기반 연구이다.
 
-최대 커버링 입지 문제(MCLP)를 활용하여 중앙대학교 내 4개의 후보지를 비교하였다.
+1. 데이터 및 예측 목표
+SAND 2026 챌린지에서 제공한 ALS 환자의 음성 녹음 데이터를 활용하였다. 환자의 발화 특성으로부터 ALS Functional Rating Scale-Revised(ALSFRS-R)의 음성 관련 항목 점수를 예측하는 것을 목표로 하였다.
 
-학생 310명을 대상으로 설문조사를 진행하고, 날씨, 픽업 용이성, 쓰레기 처리, 쾌적함, 면적의 5개 요인에 대한 중요도를 분석하여 입지 선정 가중치를 산출하였다.
+2. Hybrid Feature Extraction
+사전학습된 Whisper 모델에서 추출한 심층 음성 표현과 발화의 생리적 특성을 반영하는 수작업 음향학적 특징을 결합하였다.
 
-설문 결과를 바탕으로 평균 이동 거리 약 389.69m를 커버리지 반경으로 설정하였다. QGIS를 활용하여 후보지별 커버리지를 분석하고, 배달존 2개를 설치하는 조건에서 가능한 6개의 조합을 평가하였다.
+고수준 의미 표현과 저수준 음향학적 특징을 상호보완적으로 활용하여 ALS로 인한 조음 기능 변화를 모델링하였다.
 
-분석 결과, 310관 북쪽 출입구 주차장(A)과 310관 지하 3층 테라스(B)의 조합이 목적함수를 최대화하는 최적 입지로 선정되었다.
+3. 데이터 불균형 처리 및 모델 학습
+Sliding Window 기반 데이터 확장과 Synthetic Minority Over-sampling Technique(SMOTE)를 적용하여 중증도 점수별 데이터 불균형을 완화하였다.
 
-설문 기반 선호도 분석과 공간 데이터 분석, 수리적 최적화를 결합하여 교내 환경 문제의 데이터 기반 해결 방안을 제시하였다.`, links:[]},
-    {icon:'🧠', category:'Business Analytics & Forecasting', title:'상권분석을 통한 매출 예측 및 운영 최적화 방안 분석',
-     description:'서울시 상권 데이터와 Prophet, 코사인 유사도를 활용한 매출 예측 및 창업 의사결정 지원 프로젝트.',
-     image:'images/project2.png', period:'2024.09-2024.12', award:'중앙대학교 제 5회 분석공모전 최우수상(2024.12)', role:'업종과 요인 간의 상관관계 분석을 통한 가설 검증 서비스', details:`서울시 상권 데이터를 활용하여 예비 창업자의 매출 예측과 운영 의사결정을 지원하는 프로젝트이다.
+또한 Ridge 회귀 모델을 활용하여 예측 성능과 학습 안정성을 개선하고자 하였다.
+
+4. 연구 의의
+딥러닝 음성 특징과 음향학적 특징을 결합하는 하이브리드 접근법을 통해 ALS 중증도 예측 가능성을 탐색하였다.
+
+본 연구는 비침습적이고 객관적인 음성 기반 바이오마커를 활용한 질병 진행 모니터링 시스템 개발에 기여하는 것을 목표로 한다.
+ICASSP 2026 ’SAND (Speech Analysis for Neurodegenerative Diseases) Challenge Task2’에서 전체 4위를 차지했다.`,
+    links:['https://pdf.medrang.co.kr/KJAS/2026/039/KJAS039-04-401.pdf']
+  },
+  {
+    icon:'🏆',
+    category:'Awards & Competitions',
+    title:'유통데이터활용경진대회',
+    description:'A place to document competitions, awards, and team projects.',
+    image:'',
+    period:'2025.09-2025.11',
+    award:'제 4회 유통데이터활용경진대회 수요예측부문 우수상(2025.11)',
+    role:'',
+    details:'Replace this example with an actual competition, your award, team role, and what you built.',
+    links:[]
+  },
+  {
+    icon:'🎧',
+    category:'Biomedical AI',
+    title:'지인사칭 보이스피싱 탐지 어플리케이션 개발',
+    description:'Machine learning for speech-based biomedical analysis.',
+    image:'',
+    period:'2025.01',
+    award:'서울대학교 x AWS 솔버톤 우수상 (2025.01)',
+    role:'',
+    details:'Add your contribution, experiments, and project outcomes here.',
+    links:[]
+  },
+  {
+    icon:'🧠',
+    category:'Business Analytics & Forecasting',
+    title:'상권분석을 통한 매출 예측 및 운영 최적화 방안 분석',
+    description:'서울시 상권 데이터와 Prophet, 코사인 유사도를 활용한 매출 예측 및 창업 의사결정 지원 프로젝트.',
+    image:'images/project2.png',
+    period:'2024.09-2024.12',
+    award:'중앙대학교 제 5회 분석공모전 최우수상(2024.12)',
+    role:'업종과 요인 간의 상관관계 분석을 통한 가설 검증 서비스',
+    details:`서울시 상권 데이터를 활용하여 예비 창업자의 매출 예측과 운영 의사결정을 지원하는 프로젝트이다.
 
 1. 데이터 수집 및 분석
 2019년 1분기부터 2024년 1분기까지의 서울시 상권분석 데이터를 활용하였다. 매출액, 점포 수, 유동인구, 상주인구, 소득 수준, 직장인구, 집객시설 등 다양한 상권 특성을 분석하였다.
@@ -214,17 +264,33 @@ const CONFIG={
 4. 창업 및 운영 의사결정 지원
 업종별 상권 특성을 고려한 분석과 가설 검정, 휴무일 및 영업시간 추천 기능을 연구 범위에 포함하였다.
 
-시계열 예측과 상권 데이터 분석을 결합하여 데이터 기반 창업 의사결정을 지원하는 것을 목표로 하였다.`, links:[]},
-    {icon:'🎧', category:'Biomedical AI', title:'지인사칭 보이스피싱 탐지 어플리케이션 개발',
-     description:'Machine learning for speech-based biomedical analysis.',
-     image:'', period:'2025.01', award:'서울대학교 x AWS 솔버톤 우수상 (2025.01)', role:'', details:'Add your contribution, experiments, and project outcomes here.', links:[]},
-    {icon:'🏆', category:'Awards & Competitions', title:'유통데이터활용경진대회',
-     description:'A place to document competitions, awards, and team projects.',
-     image:'', period:'2025.09-2025.11', award:'제 4회 유통데이터활용경진대회 수요예측부문 우수상(2025.11)', role:'', details:'Replace this example with an actual competition, your award, team role, and what you built.', links:[]},
-    {icon:'🎧', category:'Biomedical AI', title:'SAND (Speech Analysis for Neurodegenerative Diseases',
-     description:'Machine learning for speech-based biomedical analysis.',
-     image:'', period:'2025.09-2025.12', award:'', role:'', details:'Add your contribution, experiments, and project outcomes here.', links:['https://pdf.medrang.co.kr/KJAS/2026/039/KJAS039-04-401.pdf']},
-  ],
+시계열 예측과 상권 데이터 분석을 결합하여 데이터 기반 창업 의사결정을 지원하는 것을 목표로 하였다.`,
+    links:[]
+  },
+  {
+    icon:'🧬',
+    category:'Spatial Data Analysis',
+    title:'배달존 최적입지 선정',
+    description:'Identifying optimal delivery zone locations through spatial data analysis.',
+    image:'images/project1.jpg',
+    period:'2023.04 - 2023.06',
+    award:'중앙대학교 제4회 경영경제대학 학술제 장려상(2023.06)',
+    role:'Analysis',
+    details:`교내 배달음식 이용에 따라 발생하는 쓰레기 분리배출 문제를 해결하기 위해 배달존의 최적 설치 위치를 선정한 프로젝트이다.
+
+최대 커버링 입지 문제(MCLP)를 활용하여 중앙대학교 내 4개의 후보지를 비교하였다.
+
+학생 310명을 대상으로 설문조사를 진행하고, 날씨, 픽업 용이성, 쓰레기 처리, 쾌적함, 면적의 5개 요인에 대한 중요도를 분석하여 입지 선정 가중치를 산출하였다.
+
+설문 결과를 바탕으로 평균 이동 거리 약 389.69m를 커버리지 반경으로 설정하였다. QGIS를 활용하여 후보지별 커버리지를 분석하고, 배달존 2개를 설치하는 조건에서 가능한 6개의 조합을 평가하였다.
+
+분석 결과, 310관 북쪽 출입구 주차장(A)과 310관 지하 3층 테라스(B)의 조합이 목적함수를 최대화하는 최적 입지로 선정되었다.
+
+설문 기반 선호도 분석과 공간 데이터 분석, 수리적 최적화를 결합하여 교내 환경 문제의 데이터 기반 해결 방안을 제시하였다.`,
+    links:[]
+  }
+],
+
   research:[
     {title:'Computational Biology',description:'Modeling biological responses and making sense of high-dimensional molecular data.'},
     {title:'Machine Learning for Science',description:'Developing and evaluating data-driven methods for scientific problems.'},
