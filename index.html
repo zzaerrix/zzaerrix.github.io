@@ -149,6 +149,10 @@
 .desktop.theme-light .topline .brand span {color:#335eb3!important}
 @media (prefers-reduced-motion: reduce) {.wallpaper {transition:none}}
 
+/* CAU mascot icons beside education headings */
+.education-item h3 { display:flex; align-items:center; flex-wrap:wrap; gap:7px; }
+.education-item .education-mascot { width:30px; height:30px; object-fit:contain; flex:none; vertical-align:middle; border-radius:50%; }
+
 </style>
 
 
@@ -240,8 +244,8 @@ case 'about':return `<div class="app-padding"><p class="section-label">HELLO / A
 <div><h1>Hi, I'm ${safe(CONFIG.name)}.</h1><p class="lead">${safe(CONFIG.headline)}</p><p class="lead" style="font-size:13px">${safe(CONFIG.about)}</p></div></div>
 <div class="pill-row">${CONFIG.interests.map(i=>`<span class="pill">${safe(i)}</span>`).join('')}</div>
 <h2 class="about-section-title">Education</h2>
-<div class="education-list"><div class="education-item"><div><h3>Chung-Ang University · Graduate School</h3><p>Department of Statistics and Data Science<br>Currently enrolled</p></div><span class="education-date">2026.09 – Present</span></div>
-<div class="education-item"><div><h3>Chung-Ang University</h3><p>Applied Statistics / Biomedical Engineering</p></div><span class="education-date">2022.03 – 2026.08</span></div></div>
+<div class="education-list"><div class="education-item"><div><h3>Chung-Ang University · Graduate School <img class="education-mascot" src="images/cau-mascot-face.png" alt="" aria-hidden="true"></h3><p>Department of Statistics and Data Science</p></div><span class="education-date">2026.09 – Present</span></div>
+<div class="education-item"><div><h3>Chung-Ang University <img class="education-mascot" src="images/cau-mascot-face.png" alt="" aria-hidden="true"></h3><p>Applied Statistics / Biomedical Engineering</p></div><span class="education-date">2022.03 – 2026.08</span></div></div>
 <h2 class="about-section-title">Research Lab</h2>
 <a class="lab-link" href="https://ikwak2.github.io/" target="_blank" rel="noopener noreferrer"><span><strong>Artificial Intelligence and Data Science Lab</strong><small>CAU ET · Chung-Ang University</small></span><span class="link-arrow" aria-hidden="true">↗</span></a>
 <div class="quicklinks"><button class="linkbtn primary" data-launch="projects">Explore projects ↗</button><button class="linkbtn" data-launch="contact">Get in touch</button></div></div>`;
